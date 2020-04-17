@@ -46,7 +46,7 @@
 						<el-date-picker v-model="timeValue" type="datetime" v-if="mode == false" placeholder="選擇時間" @change="stop();start()" :default-time="timeValue">
 						</el-date-picker>
 					</el-row>
-					<div v-if="mode == true && started == true">
+					<div v-if="mode == true || started == true">
 						時間已經過了
 						<span v-if="duringTime < 60">{{duringTime}}秒</span>
 						<span v-if="60 <= duringTime && duringTime < 3600">
@@ -56,7 +56,7 @@
 							{{Math.floor(duringTime/3600)}}小時{{Math.floor((duringTime%3600)/60)}}分鐘{{(duringTime%60)}}秒
 						</span>
 					</div>
-					<div v-if="mode == false && started == true">
+					<div v-if="mode == false || started == true">
 						剩下
 						<span v-if="lastTime < 60">{{lastTime}}秒</span>
 						<span v-if="60 <= lastTime && lastTime < 3600">
